@@ -9,7 +9,7 @@ Release:       5
 Summary:       An implementation of the PGM reliable multicast protocol
 
 Group:         System/Libraries
-License:       LGPLv2.1
+License:       LGPLv2.1+
 URL:           http://openpgm.googlecode.com/
 Source0:       http://openpgm.googlecode.com/files/libpgm-%{version}~dfsg.tar.gz
 BuildRequires: python
