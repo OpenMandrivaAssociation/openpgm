@@ -6,36 +6,36 @@
 %define	libname	%mklibname %{oname} %{api} %{major}
 %define	devname	%mklibname -d %{oname} %{api}
 
-Name:          openpgm
-Version:       5.2.122
-Release:       6
-Summary:       An implementation of the PGM reliable multicast protocol
+Name:		openpgm
+Version:	5.2.122
+Release:	6
+Summary:	An implementation of the PGM reliable multicast protocol
 
-Group:         System/Libraries
-License:       LGPLv2.1+
-URL:           http://openpgm.googlecode.com/
-Source0:       http://openpgm.googlecode.com/files/libpgm-%{version}~dfsg.tar.gz
-BuildRequires: python
+Group:		System/Libraries
+License:	LGPLv2.1+
+URL:		http://openpgm.googlecode.com/
+Source0:	http://openpgm.googlecode.com/files/libpgm-%{version}~dfsg.tar.gz
+BuildRequires:	python
 
 %description
 OpenPGM is an open source implementation of the Pragmatic General
 Multicast (PGM) specification in RFC 3208.
 
-%package -n     %{libname}
-Summary:        An implementation of the PGM reliable multicast protocol
-Group:          System/Libraries
-%rename         %{oldlib}
+%package -n	%{libname}
+Summary:	An implementation of the PGM reliable multicast protocol
+Group:		System/Libraries
+%rename		%{oldlib}
 
-%description -n %{libname}
+%description -n	%{libname}
 OpenPGM is an open source implementation of the Pragmatic General
 Multicast (PGM) specification in RFC 3208.
 
-%package -n    %{devname}
-Summary:       Development files for openpgm
-Group:         Development/C
-Requires:      %{libname} = %{EVRD}
-Provides:      %{name}-devel = %{EVRD}
-%rename        %{olddev}
+%package -n	%{devname}
+Summary:	Development files for openpgm
+Group:		Development/C
+Requires:	%{libname} = %{EVRD}
+Provides:	%{name}-devel = %{EVRD}
+%rename		%{olddev}
 
 %description -n %{devname}
 This package contains OpenPGM related development libraries and header files.
