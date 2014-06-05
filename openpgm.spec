@@ -48,7 +48,7 @@ This package contains OpenPGM related development libraries and header files.
 %{_libdir}/*.so.*
 
 %files -n %{devname}
-%doc COPYING LICENSE
+%doc LICENSE
 %doc examples/
 %{_includedir}/*
 %{_libdir}/*.so
