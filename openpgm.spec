@@ -1,11 +1,14 @@
-%define major	5
-%define minor	2
-%define libname %mklibname %{name} %{major}.%{minor}
-%define devname %mklibname -d %{name} %{major}.%{minor}
+%define	api	5.2
+%define	major	0
+%define oldlib	%mklibname %{name} %{api}
+%define olddev	%mklibname -d %{name} %{api}
+%define	oname	pgm
+%define	libname	%mklibname %{oname} %{api} %{major}
+%define	devname	%mklibname -d %{oname} %{api}
 
 Name:          openpgm
 Version:       5.2.122
-Release:       5
+Release:       6
 Summary:       An implementation of the PGM reliable multicast protocol
 
 Group:         System/Libraries
@@ -21,6 +24,7 @@ Multicast (PGM) specification in RFC 3208.
 %package -n     %{libname}
 Summary:        An implementation of the PGM reliable multicast protocol
 Group:          System/Libraries
+%rename         %{oldlib}
 
 %description -n %{libname}
 OpenPGM is an open source implementation of the Pragmatic General
@@ -29,7 +33,9 @@ Multicast (PGM) specification in RFC 3208.
 %package -n    %{devname}
 Summary:       Development files for openpgm
 Group:         Development/C
-Requires:      %{libname} = %{version}-%{release}
+Requires:      %{libname} = %{EVRD}
+Provides:      %{name}-devel = %{EVRD}
+%rename        %{olddev}
 
 %description -n %{devname}
 This package contains OpenPGM related development libraries and header files.
@@ -45,11 +51,11 @@ This package contains OpenPGM related development libraries and header files.
 %makeinstall_std
 
 %files -n %{libname}
-%{_libdir}/*.so.*
+%{_libdir}/lib%{oname}-%{api}.so.%{major}*
 
 %files -n %{devname}
 %doc LICENSE
 %doc examples/
-%{_includedir}/*
-%{_libdir}/*.so
-%{_libdir}/pkgconfig/openpgm-5.2.pc
+%{_includedir}/%{oname}-%{api}
+%{_libdir}/lib%{oname}.so
+%{_libdir}/pkgconfig/%{name}-%{api}.pc
