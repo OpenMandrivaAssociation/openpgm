@@ -8,7 +8,7 @@
 
 Name:		openpgm
 Version:	5.2.122
-Release:	6
+Release:	7
 Summary:	An implementation of the PGM reliable multicast protocol
 
 Group:		System/Libraries
