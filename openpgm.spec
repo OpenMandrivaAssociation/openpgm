@@ -42,9 +42,10 @@ This package contains OpenPGM related development libraries and header files.
 
 %prep
 %setup -q -n libpgm-%{version}~dfsg/openpgm/pgm
+2to3 -w version_generator.py
 
 %build
-%configure2_5x
+%configure
 %make
 
 %install
