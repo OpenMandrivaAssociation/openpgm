@@ -26,6 +26,11 @@ Patch3:        openpgm-03-pkgconfig.patch
 Patch4:        openpgm-04-py-version-gen.patch
 Patch5:        openpgm-05-fix-setgid.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 %description
 OpenPGM is an open source implementation of the Pragmatic General
 Multicast (PGM) specification in RFC 3208.
