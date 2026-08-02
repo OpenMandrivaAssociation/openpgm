@@ -1,14 +1,11 @@
---- openpgm-release-5-2-122/openpgm/pgm/engine.c.org	2019-11-10 14:56:31.815959556 +0100
-+++ openpgm-release-5-2-122/openpgm/pgm/engine.c	2019-11-10 14:57:33.990743464 +0100
-@@ -262,8 +262,9 @@
+diff --git a/openpgm/pgm/engine.c b/openpgm/pgm/engine.c
+--- a/openpgm/pgm/engine.c
++++ b/openpgm/pgm/engine.c
+@@ -271,6 +271,7 @@
  {
  #ifndef _WIN32
  	if (0 == getuid()) {
--		setuid((gid_t)65534);
--		setgid((uid_t)65534);
-+                setgroups(0, NULL);
-+		setgid((gid_t)65534);
-+		setuid((uid_t)65534);
- 	}
- #endif
- }
++		/* clear groups; setgid before setuid (POS36-C) */
+ 		setgroups(0, NULL);
+ 		setgid((gid_t)65534);
+ 		setuid((uid_t)65534);

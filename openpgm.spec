@@ -1,16 +1,16 @@
-%define api 5.2
+%define api 5.3
 %define major   0
 %define libname %mklibname %{name} %{api} %{major}
 %define develname %mklibname %{name} -d
 
 %global version_main      %{api}
-%global version_dash_main 5-2
-%global version_dash      %{version_dash_main}-122
+%global version_dash_main 5-3
+%global version_dash      %{version_dash_main}-128
 %global name_alias        pgm
 
 Name:          openpgm
-Version:       5.2.122
-Release:       15
+Version:       5.3.128
+Release:       1
 Summary:       An implementation of the PGM reliable multicast protocol
 Group:         System/Libraries
 # The license is LGPLv2.1
@@ -31,6 +31,8 @@ BuildRequires:	automake
 BuildRequires:	libtool-base
 BuildRequires:	slibtool
 BuildRequires:	make
+BuildRequires:	python
+BuildRequires:	perl
 %description
 OpenPGM is an open source implementation of the Pragmatic General
 Multicast (PGM) specification in RFC 3208.
@@ -47,7 +49,7 @@ Multicast (PGM) specification in RFC 3208.
 %package -n	%{develname}
 Summary:       Development files for openpgm
 Group:         Development/C
-Requires:      %{libname} = %{version}-%{release}
+Requires:      %{libname} = %{EVRD}
 
 %description -n	%{develname}
 This package contains OpenPGM related development libraries and header files.
@@ -56,6 +58,8 @@ This package contains OpenPGM related development libraries and header files.
 %prep
 %setup -q -n %{name}-release-%{version_dash}/%{name}/pgm
 %autopatch -p3
+# upstream still ships the 5.2-named template; RELEASE_INFO is 5.3
+mv -f openpgm-5.2.pc.in openpgm-5.3.pc.in
 
 libtoolize --force --copy
 aclocal
@@ -80,4 +84,4 @@ mv -f %{buildroot}%{_includedir}/%{name_alias}-%{version_main}/%{name_alias} %{b
 %doc examples/
 %{_includedir}/*
 %{_libdir}/*.so
-%{_libdir}/pkgconfig/openpgm-5.2.pc
+%{_libdir}/pkgconfig/openpgm-5.3.pc
